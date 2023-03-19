@@ -59,7 +59,6 @@ public class Main {
         }
     }
 
-
     public static ArrayList<PokemonDTO> getPokemonByType(HashMap<Integer, PokemonDTO> hashMap, String type) {
         ArrayList<PokemonDTO> pokemon = new ArrayList<>();
         for (PokemonDTO pokemonObject : hashMap.values()) {
@@ -67,7 +66,6 @@ public class Main {
                 pokemon.add(pokemonObject);
             }
         }
-
         return pokemon;
     }
 
@@ -76,7 +74,6 @@ public class Main {
         for (PokemonDTO.Types type : pokemonObject.getTypes()) {
             types.add(type.getType().getName());
         }
-
         return types;
     }
 
@@ -104,10 +101,12 @@ public class Main {
     }
 
     public static String getContentFromDTO(PokemonDTO pokemonObject) {
-        String defaultImage = pokemonObject.getSprites().getFrontDefault();
-        String shinyImage = pokemonObject.getSprites().getFrontShiny();
+        String defaultFrontImage = pokemonObject.getSprites().getFrontDefault();
+        String defaultBackImage = pokemonObject.getSprites().getBackDefault();
+        String shinyFrontImage = pokemonObject.getSprites().getFrontShiny();
+        String shinyBackImage = pokemonObject.getSprites().getBackShiny();
 
-        return generateImageElementsString(new String[] {defaultImage, shinyImage});
+        return generateImageElementsString(new String[] {defaultFrontImage, defaultBackImage, shinyFrontImage, shinyBackImage});
     }
 
     public static String generateImageElementsString(String[] images) {
